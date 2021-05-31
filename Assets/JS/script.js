@@ -6,6 +6,14 @@ var key = "01641ced755a62d708af8737698735eb";
 var lat;
 var lon;
 
+cityLS = window.localStorage.getItem('city');
+if (!cityLS) {
+  cityArray = [];
+} else {
+  cityArray = JSON.parse(cityLS);
+  historyBtn();
+}
+
 
 $(document).ready(function(){
   $("#searchBtn1").click(function(){
@@ -19,19 +27,24 @@ $(document).ready(function(){
       getFiveDay();
       storeVal();
       prVal = $("#searchWeather").val();
-      $("#searchHistory").empty();
-      for (i = 0;i<cityArray.length;i++) {
-        var r= $('<input type="button"/>');
-        r.addClass("btn btn-secondary searchBtn");
-        r.attr("value",cityArray[i]);
-        $("#searchHistory").append(r);
-      }
+      historyBtn();
     }
   });
 //   $(".btn-secondary").click(function(){
 //       alert("click");
 //   })
 });
+
+function historyBtn() { 
+  $("#searchHistory").empty();
+  for (i = 0;i<cityArray.length;i++) {
+    var r= $('<input type="button"/>');
+    r.addClass("btn btn-secondary searchBtn");
+    r.attr("value",cityArray[i]);
+    
+    $("#searchHistory").append(r);
+  }
+}
 
 
 function storeVal () {
@@ -49,7 +62,7 @@ function storeVal () {
         cityArray.unshift(cityVal);
       }
     }
-  window.localStorage("city",cityArray)
+  window.localStorage.setItem("city",JSON.stringify(cityArray));
 };
 
 function getData () {
