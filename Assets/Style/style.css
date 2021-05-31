@@ -33,9 +33,12 @@ body {
     margin-bottom:15px;
     height:auto;
     border: solid black 1px;
-    padding-bottom: 1rem;
   }
   
+  .Fiveday > .row {
+    padding-bottom: .5rem;
+  }
+
   .FivedayDiv {
     padding-left:15px;
     padding-right:15px;

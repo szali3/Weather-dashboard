@@ -2,6 +2,7 @@ var prVal;
 var cityArray = [];
 var cityArrayL = 8;
 var cityVal;
+var cityName;
 var key = "01641ced755a62d708af8737698735eb";
 var lat;
 var lon;
@@ -15,11 +16,10 @@ if (!cityLS) {
   historyBtn();
 }
 
-
 $(document).ready(function(){
   $("#searchBtn1").click(function(){
+    console.log("Primary")
     cityVal = $("#searchWeather").val();
-
     //check to see if blank or same value as previous text.
     if(prVal === cityVal || !cityVal) {
       return;
@@ -31,9 +31,13 @@ $(document).ready(function(){
       historyBtn();
     }
   });
-//   $(".btn-secondary").click(function(){
-//       alert("click");
-//   })
+  $(document).on("click",'.btn-secondary',function(event){
+      console.log("Secondary")
+      cityVal = event.target.value;
+      getData();
+      getFiveDay();
+      //storeVal();
+  })
 });
 
 function historyBtn() { 
@@ -47,11 +51,12 @@ function historyBtn() {
   }
 }
 
-
 function storeVal () {
   cityVal = $("#searchWeather").val();
   // check to if city inputed already, if already inputed will pop to top
-  if (cityArray.includes(cityVal)) {
+ if (!cityVal){
+  return
+ } else if (cityArray.includes(cityVal)) {
      indx = cityArray.indexOf(cityVal);
      cityArray.pop(indx);
      cityArray.unshift(cityVal);;
@@ -75,6 +80,7 @@ function getData () {
   .then(data => {
       lat = data[0].lat;
       lon = data[0].lon;
+      cityName = data[0].name;
       return (
         fetch("https://api.openweathermap.org/data/2.5/onecall?lat="+
         lat+
@@ -83,12 +89,13 @@ function getData () {
       )
         }).then(response => response.json())
   .then(data =>{
-    $("#ctyName").text(cityVal + " ");
+    //$("#ctyName").text(cityVal + " ");
     $("#currntCity").text(moment.unix(data.current.dt).format('M/D/YYYY'))
     iconVal = data.current.weather[0].icon;
     $("#currentWeatherIcon").html('<img id="curImgIcon" src = "http://openweathermap.org/img/wn/' +
       iconVal +
       '@2x.png" />')
+    $("#ctyName").text(cityName);
     $("#currentTemp").text(data.current.temp);
     $("#currentWind").text(data.current.wind_speed);
     $("#currentHum").text(data.current.humidity);
@@ -108,6 +115,7 @@ function getData () {
 function getFiveDay() {
   fetch("http://api.openweathermap.org/data/2.5/forecast?q="+
     cityVal+
+    "&units=metric"+
     "&appid="+key)
   .then(response => response.json())
   .then(data => {
