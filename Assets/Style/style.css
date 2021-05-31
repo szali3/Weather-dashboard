@@ -1,0 +1,82 @@
+
+
+body {
+    padding:0;
+    margin:0;
+    box-sizing:border-box;
+   
+  }
+  
+  #header {
+    background-color: #4B0082; /* For browsers that do not support gradients */
+    background-image: linear-gradient(to right, #1E90FF , #4B0082);
+    height:50px;
+    text-align:center;
+    color: white;
+  }
+
+  #header p {
+    font-weight: 800;
+  }
+  
+  #dashboard {
+     height:auto;
+    padding-left: 10px;
+  }
+  
+  
+  #search {
+    padding-top:10px;
+  }
+  
+  .Fiveday {
+    background-color:#4B0082;
+    color:white;
+    margin-right:20px;
+    margin-bottom:15px;
+    height:auto;
+    border: solid black 1px;
+  }
+  
+     
+  .FivedayDiv {
+    padding-left:15px;
+    padding-right:15px;
+  }
+  
+  #srch {
+    margin-right:43px;
+    margin-bottom:15px;
+    height:auto;
+    border: solid black 1px;
+    background-color: #D3D3D3;
+  }
+  
+  #curW {
+    color:red;
+  }
+  
+  img {
+    width: 75px;
+  }
+
+  #ctyName,#currntCity {
+    font-size: 2rem;
+    font-weight: 600;
+  }
+  
+  .searchBtn {
+    margin-top:10px;
+    width: 100%;
+  }
+
+img {
+    height: 50px;
+    width: 50px;
+  }
+
+  #curImgIcon {
+    height: 100px;
+    width: 100px;
+  }
+ 
