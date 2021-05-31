@@ -6,6 +6,7 @@ var key = "01641ced755a62d708af8737698735eb";
 var lat;
 var lon;
 
+// Get localStorage items 
 cityLS = window.localStorage.getItem('city');
 if (!cityLS) {
   cityArray = [];
@@ -117,9 +118,9 @@ function getFiveDay() {
       $("#fiveIcon"+(i)).html('<img src = "http://openweathermap.org/img/wn/' + 
         fiveDayIcon + 
         '@2x.png" />');
-      $("#fiveTemp"+(i)).text(data.list[j-1].main.temp);
-      $("#fiveWind"+(i)).text(data.list[j-1].wind.speed);
-      $("#fiveHum"+(i)).text(data.list[j-1].main.humidity);
+      $("#fiveTemp"+(i)).text("Temp: "+ data.list[j-1].main.temp);
+      $("#fiveWind"+(i)).text("Wind: "+ data.list[j-1].wind.speed);
+      $("#fiveHum"+(i)).text("Humidity: "+ data.list[j-1].main.humidity);
       i++;
     }
   });

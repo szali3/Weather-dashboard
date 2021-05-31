@@ -13,7 +13,7 @@
   <div class="row p-2" id="dashboard">
     <div class="col"id="search">
         <div class="form-group">
-          <label for="labelSearch"> <p class="h4">Search for city</p></label>
+          <label for="labelSearch"> <p class="h4">Search for a City:</p></label>
           <input type="search" class="form-control" id="searchWeather" placeholder="Enter city">
           <button type="button" class="btn btn-primary searchBtn" id="searchBtn1">Search</button>
           <div id="searchHistory"></div>
@@ -22,53 +22,54 @@
     <div class="col-10" id="weatherDisp">
       <div class="row currDiv FivedayDiv">
         <div class="col" id="srch">
-          <div class="row d-block" >
+          <div class="row d-block">
             <span id="ctyName">City</span>
             <span id="currntCity">NA</span>
             <span id="currentWeatherIcon"></span>
           </div>
-          <div class="row d-block"><span>Temp: </span><span id="currentTemp">NA</span></div>
-          <div class="row d-block"><span>Wind: </span><span id="currentWind">NA</span></div>
-          <div class="row d-block"><span>Humidity: </span><span id="currentHum">NA</span></div>
-          <div class="row d-block"><span>UV: </span><span id="currentUv">NA</span></div>
+          <div class="row d-block"><span>Temp: </span><span id="currentTemp">NA</span>&#8451;</div>
+          <div class="row d-block"><span>Wind: </span><span id="currentWind">NA</span>KPH</div>
+          <div class="row d-block"><span>Humidity: </span><span id="currentHum">NA</span>%</div>
+          <div class="row d-block"><span>UV Index: </span><span id="currentUv">NA</span></div>
         </div>
         <div class="row FivedayDiv">
+        <div class="row"> 5-Day Forecast: </div>
         <div class="col Fiveday">
           <div class="row d-block"><span id="fiveDate1">NA</span></div>
           <div class="row d-block"><span id="fiveIcon1"></span></div>
-          <div class="row d-block">Temp: <span id="fiveTemp1">NA</span></div>
-          <div class="row d-block">Wind: <span id="fiveWind1">NA</span></div>
-          <div class="row d-block">Humidity: <span id="fiveHum1">NA</span></div>
+          <div class="row d-block"><span id="fiveTemp1">Temp: NA</span></div>
+          <div class="row d-block"><span id="fiveWind1">Wind: NA</span></div>
+          <div class="row d-block"><span id="fiveHum1"> Humidity: NA</span></div>
         </div>
         <div class="col Fiveday">
-          <div class="row d-block" > <span id="fiveDate2">NA</span></div>
-          <div class="row d-block" ><span id="fiveIcon2"></span> </div>
-          <div class="row d-block">Temp: <span id="fiveTemp2">NA</span></div>
-          <div class="row d-block">Wind: <span id="fiveWind2">NA</span></div>
-          <div class="row d-block">Humidity: <span id="fiveHum2">NA</span></div>
+          <div class="row d-block"><span id="fiveDate2">NA</span></div>
+          <div class="row d-block"><span id="fiveIcon2"></span> </div>
+          <div class="row d-block"><span id="fiveTemp2">Temp: NA</span></div>
+          <div class="row d-block"><span id="fiveWind2">Wind: NA</span></div>
+          <div class="row d-block"><span id="fiveHum2">Humidity: NA</span></div>
         </div>
         <div class="col Fiveday">
-          <div class="row d-block" > <span id="fiveDate3">NA</span></div>
-          <div class="row d-block" ><span id="fiveIcon3"></span></div>
-          <div class="row d-block">Temp: <span id="fiveTemp3">NA</span></div>
-          <div class="row d-block">Wind: <span id="fiveWind3">NA</span></div>
-          <div class="row d-block">Humidity: <span id="fiveHum3">NA</span></div>
+          <div class="row d-block"><span id="fiveDate3">NA</span></div>
+          <div class="row d-block"><span id="fiveIcon3"></span></div>
+          <div class="row d-block"><span id="fiveTemp3">Temp: NA</span></div>
+          <div class="row d-block"><span id="fiveWind3">Wind: NA</span></div>
+          <div class="row d-block"><span id="fiveHum3">Humidity: NA</span></div>
         </div>
         <div class="col Fiveday">
-          <div class="row d-block" > <span id="fiveDate4">NA</span></div>
-          <div class="row d-block" ><span id="fiveIcon4"></span></div>
-          <div class="row d-block">Temp: <span id="fiveTemp4">NA</span></div>
-          <div class="row d-block">Wind: <span id="fiveWind4">NA</span></div>
-          <div class="row d-block">Humidity: <span id="fiveHum4">NA</span></div>
-    </div>
-    <div class="col Fiveday">
-    <div class="row d-block" ><span id="fiveDate5">NA</span></div>
-    <div class="row d-block" ><span id="fiveIcon5"></span></div>
-    <div class="row d-block">Temp: <span id="fiveTemp5">NA</span></div>
-    <div class="row d-block">Wind: <span id="fiveWind5">NA</span></div>
-    <div class="row d-block">Humidity: <span id="fiveHum5">NA</span></div>
-  </div>
-      </di>
+          <div class="row d-block"> <span id="fiveDate4">NA</span></div>
+          <div class="row d-block"><span id="fiveIcon4"></span></div>
+          <div class="row d-block"><span id="fiveTemp4">Temp: NA</span></div>
+          <div class="row d-block"><span id="fiveWind4">Wind: NA</span></div>
+          <div class="row d-block"><span id="fiveHum4">Humidity: NA</span></div>
+        </div>
+        <div class="col Fiveday">
+          <div class="row d-block" ><span id="fiveDate5">NA</span></div>
+          <div class="row d-block" ><span id="fiveIcon5"></span></div>
+          <div class="row d-block"><span id="fiveTemp5">Temp: NA</span></div>
+          <div class="row d-block"><span id="fiveWind5">Wind: NA</span></div>
+          <div class="row d-block"><span id="fiveHum5">Humidity: NA</span></div>
+        </div>
+      </div>
     </div>
   </div>
     
