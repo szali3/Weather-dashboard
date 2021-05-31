@@ -72,7 +72,7 @@ function storeVal () {
 };
 
 function getData () {
-   fetch("http://api.openweathermap.org/geo/1.0/direct?q="+
+   fetch("https://api.openweathermap.org/geo/1.0/direct?q="+
       cityVal+
       "&appid="+
       key)
@@ -92,7 +92,7 @@ function getData () {
     //$("#ctyName").text(cityVal + " ");
     $("#currntCity").text(moment.unix(data.current.dt).format('M/D/YYYY'))
     iconVal = data.current.weather[0].icon;
-    $("#currentWeatherIcon").html('<img id="curImgIcon" src = "http://openweathermap.org/img/wn/' +
+    $("#currentWeatherIcon").html('<img id="curImgIcon" src = "https://openweathermap.org/img/wn/' +
       iconVal +
       '@2x.png" />')
     $("#ctyName").text(cityName);
@@ -113,7 +113,7 @@ function getData () {
 }
 
 function getFiveDay() {
-  fetch("http://api.openweathermap.org/data/2.5/forecast?q="+
+  fetch("https://api.openweathermap.org/data/2.5/forecast?q="+
     cityVal+
     "&units=metric"+
     "&appid="+key)
@@ -123,7 +123,7 @@ function getFiveDay() {
   for (j=8;j<=40;j=j+8) {
       $("#fiveDate"+(i)).text(moment.unix(data.list[j-1].dt).format('M/D/YYYY'))
       fiveDayIcon = data.list[j-1].weather[0].icon;
-      $("#fiveIcon"+(i)).html('<img src = "http://openweathermap.org/img/wn/' + 
+      $("#fiveIcon"+(i)).html('<img src = "https://openweathermap.org/img/wn/' + 
         fiveDayIcon + 
         '@2x.png" />');
       $("#fiveTemp"+(i)).text("Temp: "+ data.list[j-1].main.temp);
