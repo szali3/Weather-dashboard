@@ -7,7 +7,7 @@ var key = "01641ced755a62d708af8737698735eb";
 var lat;
 var lon;
 
-// Get localStorage items 
+// Get localStorage items, if localstorage is empty do nothing else parse data
 cityLS = window.localStorage.getItem('city');
 if (!cityLS) {
   cityArray = [];
@@ -17,51 +17,50 @@ if (!cityLS) {
 }
 
 $(document).ready(function(){
+  //when document loads it waits for user click search button
   $("#searchBtn1").click(function(){
-    console.log("Primary")
-    cityVal = $("#searchWeather").val();
-    //check to see if blank or same value as previous text.
+    cityVal = $("#searchWeather").val().toLowerCase().trim();
+    //check to see if input text is blank or same value as previous text.
     if(prVal === cityVal || !cityVal) {
       return;
     } else {
       getData();
       getFiveDay();
       storeVal();
-      prVal = $("#searchWeather").val();
+      prVal = $("#searchWeather").val().toLowerCase().trim();;
       historyBtn();
     }
   });
+    //when document loads it waits for user click search history button
   $(document).on("click",'.btn-secondary',function(event){
-      console.log("Secondary")
       cityVal = event.target.value;
       getData();
       getFiveDay();
-      //storeVal();
   })
 });
 
+//Makes history button
 function historyBtn() { 
   $("#searchHistory").empty();
   for (i = 0;i<cityArray.length;i++) {
     var r= $('<input type="button"/>');
     r.addClass("btn btn-secondary searchBtn");
     r.attr("value",cityArray[i]);
-    
     $("#searchHistory").append(r);
   }
 }
 
 function storeVal () {
-  cityVal = $("#searchWeather").val();
-  // check to if city inputed already, if already inputed will pop to top
+  cityVal = $("#searchWeather").val().toLowerCase().trim();;
+ // check to see if city inputed already, if blank nothing happens
  if (!cityVal){
   return
- } else if (cityArray.includes(cityVal)) {
+ } else if (cityArray.includes(cityVal)) { //if already in array it will remove from array and put in top
      indx = cityArray.indexOf(cityVal);
-     cityArray.pop(indx);
-     cityArray.unshift(cityVal);;
+     cityArray.splice(indx, 1);
+     cityArray.unshift(cityVal);
   } else {
-      if(cityArray.length < 8){
+      if(cityArray.length < 8){ //Only 8 buttons will populate. last one will be remove and new entry will be in top
         cityArray.unshift(cityVal);
       } else {
         cityArray.pop();
@@ -71,6 +70,7 @@ function storeVal () {
   window.localStorage.setItem("city",JSON.stringify(cityArray));
 };
 
+// Get lat and long from one API and used it for another to get current weather.
 function getData () {
    fetch("https://api.openweathermap.org/geo/1.0/direct?q="+
       cityVal+
@@ -89,7 +89,7 @@ function getData () {
       )
         }).then(response => response.json())
   .then(data =>{
-    //$("#ctyName").text(cityVal + " ");
+    //Populate the current Temp div
     $("#currntCity").text(moment.unix(data.current.dt).format('M/D/YYYY'))
     iconVal = data.current.weather[0].icon;
     $("#currentWeatherIcon").html('<img id="curImgIcon" src = "https://openweathermap.org/img/wn/' +
@@ -112,6 +112,7 @@ function getData () {
   })
 }
 
+//get 5 day API and populate it
 function getFiveDay() {
   fetch("https://api.openweathermap.org/data/2.5/forecast?q="+
     cityVal+
@@ -120,6 +121,8 @@ function getFiveDay() {
   .then(response => response.json())
   .then(data => {
   i=1
+  //since it is every 3 hrs need to get every 8th item of array 8*3=24
+  //populate the 5 day divs
   for (j=8;j<=40;j=j+8) {
       $("#fiveDate"+(i)).text(moment.unix(data.list[j-1].dt).format('M/D/YYYY'))
       fiveDayIcon = data.list[j-1].weather[0].icon;
